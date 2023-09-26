@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>J.A.T.E</title>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <!-- <title>J.A.T.E</title> -->
     
       <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.css">
@@ -17,7 +18,6 @@
       <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/monokai.min.css">
       </link>
-      <link rel="stylesheet" href="src/css/style.css">
   </head>
   <body>
     <nav id="navbar">
@@ -36,11 +36,5 @@
         <div class="loading-spinner"></div>
       </div>
     </main>
-    <script type="module" src="src/js/database.js"></script>
-    <script type="module" src="src/js/header.js"></script>
-    <script type="module" src="src/js/editor.js"></script>
-    <script type="module" src="src/js/index.js"></script>
-    <script type="module" src="scr/js/install.js"></script>
-    <script type="module" src="src-sw.js"></script>
   </body>
 </html>

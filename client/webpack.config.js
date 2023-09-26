@@ -22,12 +22,23 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
       clean: true
     },
+    devtool: 'source-map',
+    devServer: {
+      static: {
+        directory: path.join(__dirname, 'dist'),
+      },
+      compress: true,
+      port: 8088,
+      open: true,
+      hot: true,
+      historyApiFallback: true,
+    },
     // Instructor provided 2023-08-28 A.C.
     plugins: [
       new HtmlWebpackPlugin({
-        template: './index.html',
+        // templateContent: './index.html',
         title: 'J.A.T.E',
-        templateContent: path.resolve(__dirname, 'index.html')
+        template: path.resolve(__dirname, 'index.html')
       }),
       new InjectManifest({
         swSrc: './src-sw.js',
@@ -63,16 +74,17 @@ module.exports = () => {
           test: /\.m?js$/,
           exclude: /node_modules/,
           use: {
+            loader: 'babel-loader',
             options: {
               presets: ['@babel/preset-env'],
               plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime']
             }
           }
         },
-        // {
-        //   test: /\.(png|jpg|gif|svg|eot|ttf|woff)$/,
-        //   type: 'asset/resource'
-        // }
+        {
+          test: /\.(png|jpg|gif|svg|eot|ttf|woff)$/,
+          type: 'asset/resource'
+        }
       ],
     },
   };
